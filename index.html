@@ -1,51 +1,28 @@
-	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>GEOLOCALIZACION 2</title>
-<style type="text/css">
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
       html { height: 100% }
       body { height: 100%; margin: 0; padding: 0 }
       #map_canvas { height: 100% }
     </style>
-    <script src="phonegap.js"></script>
     <script type="text/javascript"
-      src="http://maps.googleapis.com/maps/api/js?sensor=true">
+      src="http://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&sensor=SET_TO_TRUE_OR_FALSE">
     </script>
     <script type="text/javascript">
-      function initialize() 
-	  {
-		  document.addEventListener("deviceready",function()
-		  {
-			  //coneccion a  geolocalizacion
-			  navigator.geolocation.getCurrentPosition(function (loc)
-			  {
-			  
-			  var myLatlng = new google.maps.LatLng(19.04327,-98.22035);
-			  //var myLatlng = new google.maps.LatLng(loc.coords.latitude,loc.coords.longitude);
-			  var mapOptions = {
-					zoom: 18,
-					center: myLatlng,
-					mapTypeId: google.maps.MapTypeId.ROADMAP
-			  }
-			  var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-			
-			  var marker = new google.maps.Marker({
-				  position: myLatlng,
-				  map: map,
-				  title:"Hello World!"
-			  });
-			  }, function (err){
-				  navigator.notification.alert(err.code, null, 'Error', 'Ya que!!');
-				  });
-		  }, false);
+      function initialize() {
+        var mapOptions = {
+          center: new google.maps.LatLng(-34.397, 150.644),
+          zoom: 8,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"),
+            mapOptions);
       }
     </script>
-
-</head>
-
-<body onload="initialize();">
-	<div id="map_canvas" style="width:100%; height:100%"></div>
-
-</body>
+  </head>
+  <body onload="initialize()">
+    <div id="map_canvas" style="width:100%; height:100%"></div>
+  </body>
 </html>
